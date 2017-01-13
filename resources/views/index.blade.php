@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -133,10 +132,12 @@
             <ul class="sidebar-menu">
                 <li class="active"><a href="{{ url('/home') }}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
                 <li><a href="{{ route('courses.builder') }}"><i class="fa fa-plus-square-o"></i><span>Course Builder</span></a></li>
-                <li><a href="app-instructor-courses.html"><i class="fa fa-mortar-board"></i><span>My Courses</span></a></li>
-                <li><a href="app-instructor-earnings.html"><i class="fa fa-bar-chart-o"></i><span>Earnings</span></a></li>
-                <li><a href="app-instructor-statement.html"><i class="fa fa-dollar"></i><span>Statement</span></a></li>
-                <li><a href="#"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+                <li class="hasSubmenu">
+                    <a href="#admin-menu"><i class="fa fa-file-text-o"></i><span>Admin</span></a>
+                    <ul id="admin-menu">
+                        <li><a href="{{ route('admin.site.disciplines') }}"><span>Disciplines</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -161,6 +162,32 @@
                     <div class="page-section">
                         <h1 class="text-display-1">@yield('page-title')</h1>
                     </div>
+
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @if (session('error_message'))
+                        <div class="alert alert-danger">
+                            {{ session('error_message') }}
+                        </div>
+                    @endif
+
+                    @if (session('success_message'))
+                        <div class="alert alert-success">
+                            {{ session('success_message') }}
+                        </div>
+                    @endif
+
+                    @if($errors->count() > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        </div>
+                    @endif
 
                     @yield('content')
 
@@ -209,7 +236,9 @@
     };
 </script>
 
+<script src="/assets/js/helpers.js"></script>
 <script src="/assets/js/vendor/all.js"></script>
+<script src="/assets/js/app/sidebar.js"></script>
 @yield('custom-scripts')
 </body>
 </html>

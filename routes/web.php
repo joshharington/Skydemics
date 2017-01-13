@@ -35,3 +35,20 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
         Route::post('/builder', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@create']);
     });
 });
+
+Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\', 'middleware' => ['auth']], function() {
+    Route::group(['prefix' => '/site', 'namespace' => 'Site\\'], function() {
+        Route::group(['prefix' => '/disciplines', 'namespace' => 'Disciplines\\'], function() {
+            // list all
+            Route::get('/', ['as' => 'admin.site.disciplines', 'uses' => 'DisciplineController@index']);
+
+            // create
+            Route::get('/create', ['as' => 'admin.site.disciplines.create', 'uses' => 'DisciplineController@create']);
+            Route::post('/create', ['as' => 'admin.site.disciplines.create', 'uses' => 'DisciplineController@store']);
+
+            // edit
+            Route::get('/{discipline}', ['as' => 'admin.site.disciplines.edit', 'uses' => 'DisciplineController@show']);
+            Route::post('/{discipline}', ['as' => 'admin.site.disciplines.edit', 'uses' => 'DisciplineController@update']);
+        });
+    });
+});

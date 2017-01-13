@@ -34,19 +34,27 @@
 
             <div id="course" class="tab-pane active">
                 <form action="">
-                    <div class="form-group form-control-material">
-                        <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="Basics of HTML" />
-                        <label for="title">Title</label>
+                    <div class="col-md-9">
+                        <div class="form-group form-control-material">
+                            <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="" />
+                            <label for="title">Title</label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" class="summernote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur dignissimos itaque nesciunt nostrum, provident saepe similique. Delectus dicta distinctio quibusdam velit veniam? Aperiam cum dignissimos doloremque officiis
-                        quisquam velit!</textarea>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
+                            <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug">
+                        </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" cols="30" class="summernote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur dignissimos itaque nesciunt nostrum, provident saepe similique. Delectus dicta distinctio quibusdam velit veniam? Aperiam cum dignissimos doloremque officiis
+                            quisquam velit!</textarea>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </form>
-                <div class="text-right">
-                    <a href="#" class="btn btn-primary">Save</a>
-                </div>
             </div>
 
             <div id="meta" class="tab-pane">
@@ -57,9 +65,6 @@
                     </div>
 
                 </form>
-                <div class="text-right">
-                    <a href="#" class="btn btn-primary">Save</a>
-                </div>
             </div>
 
             <div id="lessons" class="tab-pane">
@@ -70,12 +75,17 @@
                     </div>
 
                 </form>
-                <div class="text-right">
-                    <a href="#" class="btn btn-primary">Save</a>
-                </div>
             </div>
 
         </div>
+
+        <div class="clearfix"></div>
+
+        <div class="text-right">
+            <a href="#" class="btn btn-primary">Save</a>
+            <a href="#" class="btn btn-primary">Show Course</a>
+        </div>
+
         <!-- // END Panes -->
 
     </div>
@@ -85,7 +95,6 @@
 @section('custom-scripts')
     <script src="/assets/js/vendor/forms/summernote.js"></script>
     <script src="/assets/js/responsiveTabs.min.js"></script>
-    {{--<script src="/assets/js/jquery-ui.min.js"></script>--}}
     <script>
         $(function () {
 
@@ -112,6 +121,10 @@
             $('.nav-tabs li[data-item="lessons"]').on('click', function() {
                 $('.nav-tabs li').removeClass('active');
                 $(this).addClass('active');
+            });
+
+            $('#title').on('keyup', function() {
+                $('#slug').val(str_slug($(this).val()));
             });
 
         });

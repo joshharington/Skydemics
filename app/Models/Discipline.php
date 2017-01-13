@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Discipline extends Model {
+
+    use SoftDeletes;
 
     public $incrementing = true;
     protected $table = 'disciplines';
@@ -21,8 +24,8 @@ class Discipline extends Model {
         return $this->belongsTo(Discipline::class, 'parent_id', 'id');
     }
 
-    public function child() {
-        return $this->hasMany(Discipline::class, 'id', 'parent_id');
+    public function children() {
+        return $this->hasMany(Discipline::class, 'parent_id', 'id');
     }
 
     public function lecturers() {
