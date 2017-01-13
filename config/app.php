@@ -172,6 +172,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+        Spatie\Fractal\FractalServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,6 +234,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
 
     ],
 

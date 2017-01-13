@@ -21,6 +21,7 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'ab9b68c5b1def6f80e89be13eb0a4be3' => __DIR__ . '/..' . '/spatie/laravel-fractal/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -65,6 +66,8 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'SuperClosure\\' => 13,
+            'Spatie\\Fractalistic\\' => 20,
+            'Spatie\\Fractal\\' => 15,
         ),
         'R' => 
         array (
@@ -84,6 +87,7 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'L' => 
         array (
             'League\\OAuth2\\Server\\' => 21,
+            'League\\Fractal\\' => 15,
             'League\\Flysystem\\' => 17,
             'League\\Event\\' => 13,
             'Lcobucci\\JWT\\' => 13,
@@ -228,6 +232,14 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Spatie\\Fractalistic\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/fractalistic/src',
+        ),
+        'Spatie\\Fractal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-fractal/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -255,6 +267,10 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'League\\OAuth2\\Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-server/src',
+        ),
+        'League\\Fractal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/fractal/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -396,12 +412,12 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\User' => __DIR__ . '/../..',
         'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',
         'Barryvdh\\Cors\\HandlePreflight' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflight.php',
         'Barryvdh\\Cors\\HandlePreflightSimple' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflightSimple.php',
@@ -505,6 +521,11 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'Clockwork\\Support\\Slim\\ClockworkMiddleware' => __DIR__ . '/..' . '/itsgoingd/clockwork/Clockwork/Support/Slim/ClockworkMiddleware.php',
         'Clockwork\\Support\\Swift\\SwiftPluginClockworkTimeline' => __DIR__ . '/..' . '/itsgoingd/clockwork/Clockwork/Support/Swift/SwiftPluginClockworkTimeline.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePermissionRoleTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_26_115523_create_permission_role_table.php',
+        'CreatePermissionUserTable' => __DIR__ . '/../..' . '/database/migrations/2015_02_09_132439_create_permission_user_table.php',
+        'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_26_115212_create_permissions_table.php',
+        'CreateRoleUserTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_15_114412_create_role_user_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_15_105324_create_roles_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
@@ -2033,6 +2054,25 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
+        'League\\Fractal\\Manager' => __DIR__ . '/..' . '/league/fractal/src/Manager.php',
+        'League\\Fractal\\Pagination\\Cursor' => __DIR__ . '/..' . '/league/fractal/src/Pagination/Cursor.php',
+        'League\\Fractal\\Pagination\\CursorInterface' => __DIR__ . '/..' . '/league/fractal/src/Pagination/CursorInterface.php',
+        'League\\Fractal\\Pagination\\IlluminatePaginatorAdapter' => __DIR__ . '/..' . '/league/fractal/src/Pagination/IlluminatePaginatorAdapter.php',
+        'League\\Fractal\\Pagination\\PagerfantaPaginatorAdapter' => __DIR__ . '/..' . '/league/fractal/src/Pagination/PagerfantaPaginatorAdapter.php',
+        'League\\Fractal\\Pagination\\PaginatorInterface' => __DIR__ . '/..' . '/league/fractal/src/Pagination/PaginatorInterface.php',
+        'League\\Fractal\\Pagination\\ZendFrameworkPaginatorAdapter' => __DIR__ . '/..' . '/league/fractal/src/Pagination/ZendFrameworkPaginatorAdapter.php',
+        'League\\Fractal\\ParamBag' => __DIR__ . '/..' . '/league/fractal/src/ParamBag.php',
+        'League\\Fractal\\Resource\\Collection' => __DIR__ . '/..' . '/league/fractal/src/Resource/Collection.php',
+        'League\\Fractal\\Resource\\Item' => __DIR__ . '/..' . '/league/fractal/src/Resource/Item.php',
+        'League\\Fractal\\Resource\\NullResource' => __DIR__ . '/..' . '/league/fractal/src/Resource/NullResource.php',
+        'League\\Fractal\\Resource\\ResourceAbstract' => __DIR__ . '/..' . '/league/fractal/src/Resource/ResourceAbstract.php',
+        'League\\Fractal\\Resource\\ResourceInterface' => __DIR__ . '/..' . '/league/fractal/src/Resource/ResourceInterface.php',
+        'League\\Fractal\\Scope' => __DIR__ . '/..' . '/league/fractal/src/Scope.php',
+        'League\\Fractal\\Serializer\\ArraySerializer' => __DIR__ . '/..' . '/league/fractal/src/Serializer/ArraySerializer.php',
+        'League\\Fractal\\Serializer\\DataArraySerializer' => __DIR__ . '/..' . '/league/fractal/src/Serializer/DataArraySerializer.php',
+        'League\\Fractal\\Serializer\\JsonApiSerializer' => __DIR__ . '/..' . '/league/fractal/src/Serializer/JsonApiSerializer.php',
+        'League\\Fractal\\Serializer\\SerializerAbstract' => __DIR__ . '/..' . '/league/fractal/src/Serializer/SerializerAbstract.php',
+        'League\\Fractal\\TransformerAbstract' => __DIR__ . '/..' . '/league/fractal/src/TransformerAbstract.php',
         'League\\OAuth2\\Server\\AuthorizationServer' => __DIR__ . '/..' . '/league/oauth2-server/src/AuthorizationServer.php',
         'League\\OAuth2\\Server\\AuthorizationValidators\\AuthorizationValidatorInterface' => __DIR__ . '/..' . '/league/oauth2-server/src/AuthorizationValidators/AuthorizationValidatorInterface.php',
         'League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator' => __DIR__ . '/..' . '/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php',
@@ -3153,6 +3193,14 @@ class ComposerStaticInit363cd6f4597d152d411174bf98cd9bd4
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\Fractal\\Console\\Commands\\TransformerMakeCommand' => __DIR__ . '/..' . '/spatie/laravel-fractal/src/Console/Commands/TransformerMakeCommand.php',
+        'Spatie\\Fractal\\Fractal' => __DIR__ . '/..' . '/spatie/laravel-fractal/src/Fractal.php',
+        'Spatie\\Fractal\\FractalFacade' => __DIR__ . '/..' . '/spatie/laravel-fractal/src/FractalFacade.php',
+        'Spatie\\Fractal\\FractalServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-fractal/src/FractalServiceProvider.php',
+        'Spatie\\Fractalistic\\ArraySerializer' => __DIR__ . '/..' . '/spatie/fractalistic/src/ArraySerializer.php',
+        'Spatie\\Fractalistic\\Exceptions\\InvalidTransformation' => __DIR__ . '/..' . '/spatie/fractalistic/src/Exceptions/InvalidTransformation.php',
+        'Spatie\\Fractalistic\\Exceptions\\NoTransformerSpecified' => __DIR__ . '/..' . '/spatie/fractalistic/src/Exceptions/NoTransformerSpecified.php',
+        'Spatie\\Fractalistic\\Fractal' => __DIR__ . '/..' . '/spatie/fractalistic/src/Fractal.php',
         'SuperClosure\\Analyzer\\AstAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/AstAnalyzer.php',
         'SuperClosure\\Analyzer\\ClosureAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/ClosureAnalyzer.php',
         'SuperClosure\\Analyzer\\Token' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/Token.php',

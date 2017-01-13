@@ -29,10 +29,11 @@
     25 => 'Barryvdh\\Debugbar\\ServiceProvider',
     26 => 'Laravel\\Passport\\PassportServiceProvider',
     27 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
-    28 => 'App\\Providers\\AppServiceProvider',
-    29 => 'App\\Providers\\AuthServiceProvider',
-    30 => 'App\\Providers\\EventServiceProvider',
-    31 => 'App\\Providers\\RouteServiceProvider',
+    28 => 'Spatie\\Fractal\\FractalServiceProvider',
+    29 => 'App\\Providers\\AppServiceProvider',
+    30 => 'App\\Providers\\AuthServiceProvider',
+    31 => 'App\\Providers\\EventServiceProvider',
+    32 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -52,10 +53,11 @@
     13 => 'Barryvdh\\Debugbar\\ServiceProvider',
     14 => 'Laravel\\Passport\\PassportServiceProvider',
     15 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
-    16 => 'App\\Providers\\AppServiceProvider',
-    17 => 'App\\Providers\\AuthServiceProvider',
-    18 => 'App\\Providers\\EventServiceProvider',
-    19 => 'App\\Providers\\RouteServiceProvider',
+    16 => 'Spatie\\Fractal\\FractalServiceProvider',
+    17 => 'App\\Providers\\AppServiceProvider',
+    18 => 'App\\Providers\\AuthServiceProvider',
+    19 => 'App\\Providers\\EventServiceProvider',
+    20 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (
