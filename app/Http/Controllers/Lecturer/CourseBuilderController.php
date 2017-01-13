@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 
 class CourseBuilderController extends Controller {
 
-    public function index() {}
+    public function index() {
+        return view('layouts.lecturer.courses.builder');
+    }
 
     public function show() {}
 

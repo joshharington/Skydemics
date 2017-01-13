@@ -28,3 +28,10 @@ Route::group(['prefix' => '/account', 'namespace' => 'Accounts\\', 'middleware' 
     Route::get('/settings', ['as' => 'account.settings', 'uses' => 'SettingsController@index']);
     Route::post('/settings', ['as' => 'account.settings', 'uses' => 'SettingsController@update']);
 });
+
+Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
+    Route::group(['namespace' => 'Lecturer\\', 'middleware' => ['auth']], function() {
+        Route::get('/builder', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@index']);
+        Route::post('/builder', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@create']);
+    });
+});

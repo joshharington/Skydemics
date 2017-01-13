@@ -17,6 +17,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    @yield('custom-styles')
 </head>
 
 <body>
@@ -130,8 +131,8 @@
             </div>
 
             <ul class="sidebar-menu">
-                <li class="active"><a href="app-instructor-dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                <li><a href="app-instructor-messages.html"><i class="fa fa-paper-plane"></i><span>Messages</span></a></li>
+                <li class="active"><a href="{{ url('/home') }}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+                <li><a href="{{ route('courses.builder') }}"><i class="fa fa-plus-square-o"></i><span>Course Builder</span></a></li>
                 <li><a href="app-instructor-courses.html"><i class="fa fa-mortar-board"></i><span>My Courses</span></a></li>
                 <li><a href="app-instructor-earnings.html"><i class="fa fa-bar-chart-o"></i><span>Earnings</span></a></li>
                 <li><a href="app-instructor-statement.html"><i class="fa fa-dollar"></i><span>Statement</span></a></li>
@@ -209,6 +210,6 @@
 </script>
 
 <script src="/assets/js/vendor/all.js"></script>
-
+@yield('custom-scripts')
 </body>
 </html>
