@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Discipline extends Model {
 
-    use SoftDeletes;
-
     public $incrementing = true;
     protected $table = 'disciplines';
     protected $primaryKey = 'id';

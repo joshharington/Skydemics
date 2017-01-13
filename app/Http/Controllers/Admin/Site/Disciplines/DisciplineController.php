@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateDisciplineRequest;
 use App\Models\Discipline;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DisciplineController extends Controller {
 
@@ -64,6 +65,22 @@ class DisciplineController extends Controller {
         session()->flash('success_message', 'Discipline saved.');
 
         return redirect()->route('admin.site.disciplines');
+    }
+
+    public function destroy(Discipline $discipline) {
+        $user = Auth::user();
+
+        if(!$user->hasRole('super.admin')) {
+            session()->flash('error_message', 'You do not have the necessary permissions to process this request.');
+            return redirect()->back()->withInput();
+        }
+
+        $discipline->delete();
+
+        session()->flash('success_message', 'Discipline removed.');
+
+        return redirect()->route('admin.site.disciplines');
+
     }
 
 }

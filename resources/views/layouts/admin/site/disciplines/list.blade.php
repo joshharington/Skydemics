@@ -49,9 +49,8 @@
                         <td>0</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('admin.site.disciplines.edit', $discipline->id) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-                                <a href="#" class="btn btn-xs btn-warning">Deactivate</a>
-                                <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                <a href="{{ route('admin.site.disciplines.edit', $discipline->id) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="#" class="btn btn-xs btn-danger remove-discipline" data-itemid="{{ $discipline->id }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </div>
                         </td>
                     </tr>
@@ -66,5 +65,12 @@
     <script src="/assets/js/vendor/tables/dataTables.bootstrap.js"></script>
     <script>
         $('.table').dataTable();
+
+        $(document).on('click', '.remove-discipline', function() {
+            var r = confirm("Are you sure that you want to delete this discipline?");
+            if (r == true) {
+                window.location.href = '{{ route('admin.site.disciplines.delete', $discipline->id) }}';
+            }
+        });
     </script>
 @endsection

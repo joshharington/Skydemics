@@ -49,6 +49,9 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\', 'middleware' => ['
             // edit
             Route::get('/{discipline}', ['as' => 'admin.site.disciplines.edit', 'uses' => 'DisciplineController@show']);
             Route::post('/{discipline}', ['as' => 'admin.site.disciplines.edit', 'uses' => 'DisciplineController@update']);
+
+            // delete
+            Route::get('/{discipline}/delete', ['as' => 'admin.site.disciplines.delete', 'uses' => 'DisciplineController@destroy']);
         });
     });
 });
