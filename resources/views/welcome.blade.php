@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+
         <!-- Styles -->
         <style>
             html, body {
@@ -63,29 +64,39 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <link href="/assets/css/vendor/all.css" rel="stylesheet">
+        <link href="/assets/css/app/app.css" rel="stylesheet">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
+        @if (Route::has('login'))
+            <div class="navbar navbar-default navbar-fixed-top navbar-size-large navbar-size-xlarge paper-shadow" data-z="0" data-animated role="navigation">
+                <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <div class="navbar-right">
+                        <a href="{{ url('/login') }}" class="navbar-btn btn btn-primary text-white">Log In</a>
+                        <a href="{{ url('/register') }}" class="navbar-btn btn btn-primary">Register</a>
+                    </div>
                 </div>
-            @endif
+                <!-- /.navbar-collapse -->
+                </div>
+            </div>
+        @endif
 
+        <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Skydemics <small></small>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    By EON Consulting
                 </div>
             </div>
         </div>
+
+        <script src="/assets/js/vendor/all.js"></script>
+        <script src="/assets/js/app/app.js"></script>
     </body>
 </html>
