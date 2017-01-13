@@ -13,7 +13,33 @@
     <div class="tab-content">
 
         <div id="account" class="tab-pane active">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action="{{ route('account.settings') }}">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                @if (session('error_message'))
+                    <div class="alert alert-danger">
+                        {{ session('error_message') }}
+                    </div>
+                @endif
+
+                @if (session('success_message'))
+                    <div class="alert alert-success">
+                        {{ session('success_message') }}
+                    </div>
+                @endif
+
+                @if($errors->count() > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Avatar</label>
                     <div class="col-md-6">
@@ -79,6 +105,7 @@
                 <div class="form-group margin-none">
                     <div class="col-md-offset-2 col-md-10">
                         {{ csrf_field() }}
+                        <input type="hidden" value="{{ $user->id }}" name="id" />
                         <button type="submit" class="btn btn-primary paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated>Save Changes</button>
                     </div>
                 </div>

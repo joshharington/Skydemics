@@ -9,6 +9,32 @@
         <h1 class="text-display-1">Create account</h1>
         <div class="panel-body">
 
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            @if (session('error_message'))
+                <div class="alert alert-danger">
+                    {{ session('error_message') }}
+                </div>
+            @endif
+
+            @if (session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message') }}
+                </div>
+            @endif
+
+            @if($errors->count() > 0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+
             <!-- Signup -->
             <form role="form" action="{{ url('/register') }}" method="POST">
                 {{ csrf_field() }}

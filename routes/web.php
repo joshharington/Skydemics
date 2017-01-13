@@ -26,4 +26,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => '/account', 'namespace' => 'Accounts\\', 'middleware' => ['auth']], function() {
     Route::get('/settings', ['as' => 'account.settings', 'uses' => 'SettingsController@index']);
+    Route::post('/settings', ['as' => 'account.settings', 'uses' => 'SettingsController@update']);
 });
