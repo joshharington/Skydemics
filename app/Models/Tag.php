@@ -13,6 +13,14 @@ class Tag extends Model {
         'name', 'slug', 'creator_id'
     ];
 
+    public function creator() {
+        return $this->belongsTo(User::class, 'creator_id', 'id');
+    }
+
+    public function tagged_items() {
+        return $this->belongsToMany(Tagged::class, 'tag_id', 'id');
+    }
+
 }
 
 //id

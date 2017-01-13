@@ -13,6 +13,14 @@ class Tagged extends Model {
         'taggable_id', 'taggable_type', 'tag_id'
     ];
 
+    public function tag() {
+        return $this->hasOne(Tag::class, 'tag_id', 'id');
+    }
+
+    public function taggable() {
+        return $this->morphTo();
+    }
+
 }
 
 //id

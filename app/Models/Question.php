@@ -13,6 +13,14 @@ class Question extends Model {
         'questionset_id', 'question', 'option_set_id', 'required', 'deadline', 'position', 'construct_random'
     ];
 
+    public function question_set() {
+        return $this->hasOne(QuestionSet::class, 'questionset_id', 'id');
+    }
+
+    public function option_set() {
+        return $this->hasOne(OptionSet::class, 'option_set_id', 'id');
+    }
+
 }
 
 //id

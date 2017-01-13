@@ -14,6 +14,18 @@ class Lesson extends Model {
         'position', 'published', 'published_date'
     ];
 
+    public function tags() {
+        return $this->morphMany(Tagged::class, 'taggable');
+    }
+
+    public function files() {
+        return $this->morphMany(Filed::class, 'fileable');
+    }
+
+    public function questions() {
+        return $this->morphMany(Question::class, 'questionable');
+    }
+
 }
 
 //id

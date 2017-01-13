@@ -13,6 +13,14 @@ class Org extends Model {
         'name', 'description', 'slug', 'address', 'website', 'email', 'phone', 'admin_id'
     ];
 
+    public function admin() {
+        return $this->belongsTo(User::class, 'admin_id', 'id');
+    }
+
+    public function lecturers() {
+        return $this->hasMany(Lecturer::class, 'discipline_id', 'id');
+    }
+
 }
 
 //id

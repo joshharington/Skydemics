@@ -13,6 +13,10 @@ class QuestionSet extends Model {
         'questionable_id', 'questionable_type', 'deadline'
     ];
 
+    public function questionable() {
+        return $this->morphTo();
+    }
+
 }
 
 //id

@@ -13,6 +13,10 @@ class OptionSet extends Model {
         'question_id', 'option', 'is_correct', 'position'
     ];
 
+    public function question() {
+        return $this->belongsTo(Question::class, 'question_id', 'id');
+    }
+
 }
 
 //id

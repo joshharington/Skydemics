@@ -13,6 +13,18 @@ class Lecturer extends Model {
         'user_id', 'discipline_id', 'org_id'
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function discipline() {
+        return $this->belongsTo(Discipline::class, 'discipline_id', 'id');
+    }
+
+    public function org() {
+        return $this->belongsTo(Org::class, 'org_id', 'id');
+    }
+
 }
 
 //id

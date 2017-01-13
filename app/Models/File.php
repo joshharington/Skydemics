@@ -13,6 +13,18 @@ class File extends Model {
         'filename', 'link', 'ext', 'uploader_id', 'upload_date'
     ];
 
+    public function uploader() {
+        return $this->belongsTo(User::class, 'uploader_id', 'id');
+    }
+
+    public function tags() {
+        return $this->morphMany(Tagged::class, 'taggable');
+    }
+
+    public function filed() {
+        return $this->belongsToMany(Filed::class, 'id', 'file_id');
+    }
+
 }
 
 //id

@@ -13,6 +13,14 @@ class Filed extends Model {
         'fileable_id', 'fileable_type', 'file_id'
     ];
 
+    public function fileable() {
+        return $this->morphTo();
+    }
+
+    public function file() {
+        return $this->hasOne(File::class, 'id', 'file_id');
+    }
+
 }
 
 //id

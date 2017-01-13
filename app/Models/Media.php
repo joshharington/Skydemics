@@ -13,6 +13,14 @@ class Media extends Model {
         'filename', 'link', 'thumb_lg', 'thumb_md', 'thumb_sm', 'ext', 'uploader_id', 'uploader_date'
     ];
 
+    public function uploader() {
+        return $this->belongsTo(User::class, 'uploader_id', 'id');
+    }
+
+    public function tags() {
+        return $this->morphMany(Tagged::class, 'taggable');
+    }
+
 }
 
 //id
