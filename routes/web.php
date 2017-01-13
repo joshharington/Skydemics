@@ -30,9 +30,15 @@ Route::group(['prefix' => '/account', 'namespace' => 'Accounts\\', 'middleware' 
 });
 
 Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
-    Route::group(['namespace' => 'Lecturer\\', 'middleware' => ['auth']], function() {
-        Route::get('/builder', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@index']);
-        Route::post('/builder', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@create']);
+    Route::group(['namespace' => 'Lecturer\\'], function() {
+        Route::group(['prefix' => '/builder'], function() {
+            // create
+            Route::get('/', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@index']);
+            Route::post('/', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@create']);
+
+            // single
+            Route::get('/{course}', ['as' => 'courses.builder.single', 'uses' => 'CourseBuilderController@show']);
+        });
     });
 });
 

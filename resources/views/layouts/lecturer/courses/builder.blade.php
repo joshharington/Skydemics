@@ -21,70 +21,100 @@
     <!-- Tabbable Widget -->
     <div class="tabbable paper-shadow relative" data-z="0.5" id="tabs">
 
-        <!-- Tabs -->
-        <ul class="nav nav-tabs">
-            <li class="active" data-item="course"><a href="#course"><i class="fa fa-fw fa-lock"></i> <span class="hidden-sm hidden-xs">Course</span></a></li>
-            <li data-item="meta"><a href="#meta"><i class="fa fa-fw fa-credit-card"></i> <span class="hidden-sm hidden-xs">Meta</span></a></li>
-            <li data-item="lessons"><a href="#lessons"><i class="fa fa-fw fa-credit-card"></i> <span class="hidden-sm hidden-xs">Lessons</span></a></li>
-        </ul>
-        <!-- // END Tabs -->
+            <!-- Tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active" data-item="course"><a href="#course"><i class="fa fa-fw fa-lock"></i> <span class="hidden-sm hidden-xs">Course</span></a></li>
+                <li data-item="meta"><a href="#meta"><i class="fa fa-fw fa-credit-card"></i> <span class="hidden-sm hidden-xs">Meta</span></a></li>
+            </ul>
+            <!-- // END Tabs -->
 
-        <!-- Panes -->
-        <div class="tab-content">
+            <!-- Panes -->
+            <div class="tab-content">
+                <form action="{{ route('courses.builder') }}" method="POST" id="builder-form">
+                <div id="course" class="tab-pane active">
 
-            <div id="course" class="tab-pane active">
-                <form action="">
-                    <div class="col-md-9">
-                        <div class="form-group form-control-material">
-                            <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="" />
-                            <label for="title">Title</label>
+                        <div class="col-md-9">
+                            <div class="form-group form-control-material">
+                                <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="" />
+                                <label for="title">Title</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
-                            <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
+                                <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" cols="30" class="summernote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur dignissimos itaque nesciunt nostrum, provident saepe similique. Delectus dicta distinctio quibusdam velit veniam? Aperiam cum dignissimos doloremque officiis
-                            quisquam velit!</textarea>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="30" class="summernote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur dignissimos itaque nesciunt nostrum, provident saepe similique. Delectus dicta distinctio quibusdam velit veniam? Aperiam cum dignissimos doloremque officiis
+                                quisquam velit!</textarea>
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
+
+                </div>
+
+                <div id="meta" class="tab-pane">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label for="parent">Discipline</label>
+                            <br />
+                            <select name="discipline" class="selectpicker" data-style="btn-white" data-live-search="true" data-size="5">
+                                @foreach($disciplines as $discipline_id => $dis)
+                                    <option value="{{ $discipline_id }}">{{ $dis }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-3">
+                            <label for="parent">Is Published</label>
+                            <br />
+                            <div data-type="publishe" class="checkbox checkbox-info checkbox-circle">
+                                <input id="publishe" type="checkbox" name="invite_only">
+                                <label for="publishe">Yes</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="parent">Enrollments are Invite Only</label>
+                            <br />
+                            <div data-type="invite_only" class="checkbox checkbox-info checkbox-circle">
+                                <input id="invite_only" type="checkbox" name="invite_only">
+                                <label for="invite_only">Yes</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="parent">Anyone can enroll</label>
+                            <br />
+                            <div data-type="public_enrollment" class="checkbox checkbox-info checkbox-circle">
+                                <input id="public_enrollment" type="checkbox" checked name="public_enrollment">
+                                <label for="public_enrollment">Yes</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="parent">Manually accept enrollments</label>
+                            <br />
+                            <div class="checkbox checkbox-info checkbox-circle">
+                                <input id="manually_accept" type="checkbox" checked name="manually_accept">
+                                <label for="manually_accept">Yes</label>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="clearfix"></div>
+                </div>
+                    {{ csrf_field() }}
                 </form>
             </div>
 
-            <div id="meta" class="tab-pane">
-                <form action="">
-                    <div class="form-group form-control-material">
-                        <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="Basics of HTML" />
-                        <label for="title">Meta</label>
-                    </div>
+            <div class="clearfix"></div>
 
-                </form>
+            <div class="text-right">
+                <a href="#" class="btn btn-primary" id="btn_save">Save</a>
+                <a href="#" class="btn btn-primary">Lessons >></a>
             </div>
-
-            <div id="lessons" class="tab-pane">
-                <form action="">
-                    <div class="form-group form-control-material">
-                        <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="Basics of HTML" />
-                        <label for="title">Lessons</label>
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="text-right">
-            <a href="#" class="btn btn-primary">Save</a>
-            <a href="#" class="btn btn-primary">Show Course</a>
-        </div>
 
         <!-- // END Panes -->
 
@@ -118,13 +148,23 @@
                 $(this).addClass('active');
             });
 
-            $('.nav-tabs li[data-item="lessons"]').on('click', function() {
-                $('.nav-tabs li').removeClass('active');
-                $(this).addClass('active');
-            });
-
             $('#title').on('keyup', function() {
                 $('#slug').val(str_slug($(this).val()));
+            });
+
+            $('.checkbox').on('click', function() {
+                switch($(this).data('type')) {
+                    case 'invite_only':
+                        $('#public_enrollment').prop('checked', false);
+                        break;
+                    case 'public_enrollment':
+                        $('#invite_only').prop('checked', false);
+                        break;
+                }
+            });
+
+            $('#btn_save').on('click', function() {
+                $('#builder-form').submit();
             });
 
         });
