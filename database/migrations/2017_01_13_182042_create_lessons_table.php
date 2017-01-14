@@ -21,7 +21,7 @@ class CreateLessonsTable extends Migration
             $table->integer('published')->default(1);
             $table->string('published_date');
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('slug');
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();

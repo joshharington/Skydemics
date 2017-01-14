@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::group(['namespace' => 'API\\', 'middlware' => ['auth:api']], function() {
+    Route::group(['prefix' => '/builders', 'namespace' => 'Builders\\'], function() {
+        Route::group(['prefix' => '/lessons', 'namespace' => 'Lessons\\'], function() {
+            Route::post('/', ['as' => 'api.builders.lessons.modules.create', 'uses' => 'ModuleController@store']);
+        });
+    });
+
+});

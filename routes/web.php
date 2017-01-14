@@ -35,7 +35,7 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
         // list all
         Route::get('/', ['as' => 'lecturer.courses', 'uses' => 'CourseController@index']);
 
-        // builder
+        // builders
         Route::group(['prefix' => '/builder'], function() {
             // create
             Route::get('/', ['as' => 'courses.builder', 'uses' => 'CourseBuilderController@index']);
@@ -46,7 +46,16 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
             Route::post('/{course}', ['as' => 'courses.builder.single', 'uses' => 'CourseBuilderController@update']);
 
             Route::group(['prefix' => '/{course}/lessons'], function() {
+                // list all
                 Route::get('/', ['as' => 'courses.builder.lessons', 'uses' => 'LessonBuilderController@index']);
+
+                // create
+                Route::get('/create/{module}', ['as' => 'courses.builder.lessons.create', 'uses' => 'LessonBuilderController@create']);
+                Route::post('/create/{module}', ['as' => 'courses.builder.lessons.create', 'uses' => 'LessonBuilderController@store']);
+
+                // show
+                Route::get('/{lesson}', ['as' => 'courses.builder.lessons.single', 'uses' => 'LessonBuilderController@show']);
+                Route::post('/{lesson}', ['as' => 'courses.builder.lessons.single', 'uses' => 'LessonBuilderController@update']);
             });
         });
 

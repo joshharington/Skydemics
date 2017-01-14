@@ -11,7 +11,7 @@ class Module extends Model {
     protected $primaryKey = 'id';
     protected $fillable = [
         'course_id', 'name', 'description', 'slug', 'featured_image_id', 'start_date', 'end_date', 'extra_info',
-        'position', 'published', 'published_date'
+        'position', 'published', 'published_date', 'temp_guid'
     ];
 
     public function tags() {
@@ -31,7 +31,7 @@ class Module extends Model {
     }
 
     public function lessons() {
-        return $this->hasMany(Lesson::class, 'id', 'module_id');
+        return $this->hasMany(Lesson::class, 'module_id', 'id');
     }
 
 }

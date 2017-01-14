@@ -17,7 +17,7 @@ class CreateModulesTable extends Migration
             $table->increments('id');
             $table->integer('course_id')->unsigned();
             $table->integer('featured_image_id')->unsigned()->nullable();
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->integer('published')->default(0);
             $table->string('name');
             $table->string('description')->nullable();
@@ -26,6 +26,7 @@ class CreateModulesTable extends Migration
             $table->string('end_date')->nullable();
             $table->string('extra_info')->nullable();
             $table->string('published_date')->nullable();
+            $table->string('temp_guid')->nullable();
             $table->timestamps();
         });
     }
