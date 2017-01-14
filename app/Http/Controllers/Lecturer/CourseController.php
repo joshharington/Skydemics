@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Lecturer;
 
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,6 +35,15 @@ class CourseController extends Controller {
         $module->delete();
 
         session()->flash('success_message', 'Module deleted.');
+        return redirect()->route('courses.builder.lessons', $course->id);
+    }
+
+    public function destroy_lesson(Course $course, Lesson $lesson) {
+        $this->authorize('delete', $lesson);
+
+        $lesson->delete();
+
+        session()->flash('success_message', 'Lesson deleted.');
         return redirect()->route('courses.builder.lessons', $course->id);
     }
 

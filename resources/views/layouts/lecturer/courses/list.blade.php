@@ -48,7 +48,7 @@
                             {{ $course->discipline->name }}
                         @endif
                     </td>
-                    <td>0</td>
+                    <td>{{ ($course->lessons) ? $course->lessons()->count() : 0 }}</td>
                     <td>0</td>
                     <td>{{ ($course->published == 1) ? 'Yes' : 'No' }}</td>
                     <td>

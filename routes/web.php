@@ -65,6 +65,7 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
         // delete
         Route::get('/{course}/delete', ['as' => 'lecturer.courses.delete', 'uses' => 'CourseController@destroy']);
         Route::get('/{course}/delete/{module}', ['as' => 'lecturer.courses.modules.delete', 'uses' => 'CourseController@destroy_module']);
+        Route::get('/{course}/delete/lesson/{lesson}', ['as' => 'lecturer.courses.modules.lessons.delete', 'uses' => 'CourseController@destroy_lesson']);
     });
 });
 

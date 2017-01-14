@@ -53,6 +53,10 @@ class Course extends Model {
         return $this->hasMany(Module::class, 'course_id', 'id');
     }
 
+    public function lessons() {
+        return $this->hasManyThrough(Lesson::class, Module::class);
+    }
+
 }
 
 //id

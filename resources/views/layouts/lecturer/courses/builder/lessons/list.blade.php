@@ -107,7 +107,7 @@
                         <div class="pull-right">
                             <div class="btn-group">
                                 <a href="{{ route('courses.builder.lessons.single', [$course->id, $lesson->id]) }}" class="btn btn-xs btn-info" data-moduleid="1"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                <a href="#" class="btn btn-xs btn-danger remove-lesson hidden" data-moduleid="1"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                <a href="#" class="btn btn-xs btn-danger remove-lesson hidden" data-moduleid="{{ $module->id }}" data-lessonid="{{ $lesson->id }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </div>
                         </div>
                     </div>
@@ -156,10 +156,10 @@
         $( ".sortable" ).disableSelection();
 
         $(document).on('click', '.remove-lesson', function() {
-            var item_id = $(this).data('itemid');
+            var item_id = $(this).data('lessonid');
             var r = confirm("Are you sure that you want to delete this lesson?");
             if (r == true) {
-                var url = '{{ route('lecturer.courses.delete', '--id--') }}';
+                var url = '{{ route('lecturer.courses.modules.lessons.delete', [$course->id, '--id--']) }}';
                 url = url.replace('--id--', item_id);
                 window.location.href =  url;
             }
