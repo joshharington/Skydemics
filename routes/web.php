@@ -44,6 +44,10 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
             // single
             Route::get('/{course}', ['as' => 'courses.builder.single', 'uses' => 'CourseBuilderController@show']);
             Route::post('/{course}', ['as' => 'courses.builder.single', 'uses' => 'CourseBuilderController@update']);
+
+            Route::group(['prefix' => '/{course}/lessons'], function() {
+                Route::get('/', ['as' => 'courses.builder.lessons', 'uses' => 'LessonBuilderController@index']);
+            });
         });
 
         // show

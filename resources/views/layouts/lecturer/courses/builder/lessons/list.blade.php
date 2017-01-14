@@ -1,11 +1,11 @@
 @extends('index')
 
 @section('site-title')
-    Courses | Lecturer
+    Course Lessons | Lecturer
 @endsection
 
 @section('page-title')
-    Courses | Lecturer <div class="pull-right"><a href="{{ route('courses.builder') }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Build course</a></div>
+    Course Lessons | Lecturer
 @endsection
 
 @section('custom-styles')

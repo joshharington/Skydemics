@@ -116,6 +116,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                    <input type="hidden" name="lessons" value="false" />
                     {{ csrf_field() }}
                 </form>
             </div>
@@ -124,7 +125,7 @@
 
             <div class="text-right">
                 <a href="#" class="btn btn-primary" id="btn_save">Save</a>
-                <a href="#" class="btn btn-primary">Lessons >></a>
+                <a href="#" class="btn btn-primary" id="btn_lessons">Lessons >></a>
             </div>
 
         <!-- // END Panes -->
@@ -177,6 +178,11 @@
             });
 
             $('#btn_save').on('click', function() {
+                $('#builder-form').submit();
+            });
+
+            $('#btn_lessons').on('click', function() {
+                $('input[name="lessons"]').val(true);
                 $('#builder-form').submit();
             });
 

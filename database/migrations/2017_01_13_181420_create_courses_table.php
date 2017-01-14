@@ -25,7 +25,7 @@ class CreateCoursesTable extends Migration
             $table->integer('is_open')->default(1);
             $table->integer('invite_only')->default(0);
             $table->integer('creator_id')->unsigned();
-            $table->integer('discipline_id')->unsigned();
+            $table->integer('discipline_id')->unsigned()->nullable();
             $table->integer('lecturer_id')->unsigned()->nullable();
             $table->integer('featured_image_id')->nullable();
             $table->integer('auto_accept_enrollments')->default(0);

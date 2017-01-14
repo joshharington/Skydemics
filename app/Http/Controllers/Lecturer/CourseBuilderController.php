@@ -26,7 +26,10 @@ class CourseBuilderController extends Controller {
         $course->slug = $request->slug;
         $course->creator_id = $request->user()->id;
         $course->lecturer_id = $request->user()->id;
-        $course->discipline_id = $request->discipline;
+
+        if($request->has('discipline') && $request->discipline != null) {
+            $course->discipline_id = $request->discipline;
+        }
 
         if($request->has('start_date')) {
             $course->start_date = strtotime($request->start_date);
@@ -62,6 +65,10 @@ class CourseBuilderController extends Controller {
 
         $course->save();
 
+        if($request->has('lessons') && $request->lessons == true) {
+            return redirect()->route('courses.builder.lessons', $course->id);
+        }
+
         session()->flash('success_message', 'Course saved.');
         return redirect()->route('courses.builder.single', $course->id);
 
@@ -70,8 +77,6 @@ class CourseBuilderController extends Controller {
     public function show(Course $course) {
         $disciplines = Discipline::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
         $resulting_array = [null => 'No Discipline'] + $disciplines;
-
-//        dd($course);
 
         return view('layouts.lecturer.courses.builder.edit', ['course' => $course, 'disciplines' => $resulting_array]);
     }
@@ -118,6 +123,10 @@ class CourseBuilderController extends Controller {
         }
 
         $course->save();
+
+        if($request->has('lessons') && $request->lessons == true) {
+            return redirect()->route('courses.builder.lessons', $course->id);
+        }
 
         session()->flash('success_message', 'Course updated.');
         return redirect()->route('courses.builder.single', $course->id);

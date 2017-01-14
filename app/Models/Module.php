@@ -26,6 +26,14 @@ class Module extends Model {
         return $this->morphMany(Question::class, 'questionable');
     }
 
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
+    public function lessons() {
+        return $this->hasMany(Lesson::class, 'id', 'module_id');
+    }
+
 }
 
 //id
