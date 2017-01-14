@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API\Builders\Lessons;
 
 use App\Http\Requests\API\Builders\Lessons\StoreModuleRequest;
+use App\Http\Requests\API\Builders\Lessons\UpdateModuleLessonOrderRequest;
 use App\Http\Requests\API\Builders\Lessons\UpdateModuleRequest;
+use App\Models\Lesson;
 use App\Models\Module;
 use App\Transformers\ModuleTransformer;
 use Illuminate\Http\Request;
@@ -28,11 +30,11 @@ class ModuleController extends Controller {
 
     }
 
-    public function update(UpdateModuleRequest $request, Module $module) {
+    public function update(UpdateModuleRequest $request) {
 
         $module = Module::where('id', $request->module_id)->first();
         if(!$module) {
-            return response()->json(['error' => 'Could not find module.']);
+            return response()->json(['success' => false, 'error' => 'Could not find module.']);
         }
 
         $module->course_id = $request->course_id;
@@ -43,7 +45,22 @@ class ModuleController extends Controller {
         $module->save();
 
         return fractal()->item($module)->transformWith(ModuleTransformer::class)->toArray();
+    }
 
+    public function update_order(UpdateModuleLessonOrderRequest $request) {
+
+        $arr = $request->order;
+        $arr = json_decode($arr);
+        $ids = array_map('intval', explode('&', $arr));
+
+        $lessons = Lesson::whereIn('id', $ids)->get();
+
+        foreach($lessons as $lesson) {
+            $lesson->position = array_search($lesson->id, $ids);
+            $lesson->save();
+        }
+
+        return response()->json(['success' => true]);
     }
 
 }

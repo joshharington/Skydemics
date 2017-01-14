@@ -91,11 +91,11 @@
                     </div>
                 </div>
             </div>
-            <div class="list-group collapse in" id="module-{{ $module->id }}">
+            <div class="list-group collapse in sortable" id="module-{{ $module->id }}">
                 @foreach($module->lessons as $lesson)
-                    <div class="list-group-item media" data-target="app-take-course.html">
+                    <div class="list-group-item media ui-state-default" id="lesson-{{ $lesson->id }}">
                         <div class="media-left">
-                            <div class="text-crt">{{ $lesson_count++ }}.</div>
+                            <div class="text-crt"><span class="glyphicon glyphicon-move"></span></div>
                         </div>
                         <div class="media-body">
                             <i class="fa fa-fw fa-circle {{ ($lesson->published == 1) ? 'text-green-300' : 'text-blue-300' }}"></i> {{ $lesson->name }}<!-- <br />
@@ -133,6 +133,27 @@
         var course_id = '{{ $course->id }}';
         var module_title = false;
         var module_content = false;
+
+        $( ".sortable" ).sortable({
+            stop : function(event, ui) {
+                var serialized = JSON.stringify($(this).sortable('serialize'));
+                serialized = serialized.replace(/lesson\[]=/g, '');
+                var arr = serialized.split('&');
+
+                $.ajax({
+                    url: '{{ route('api.builders.lessons.modules.update.order') }}',
+                    type: 'POST',
+                    data: {order: serialized},
+                    success: function(res) {
+                        console.log('res:', res);
+                    },
+                    error: function(res) {
+                        console.log('error res:', res);
+                    }
+                });
+            }
+        });
+        $( ".sortable" ).disableSelection();
 
         $(document).on('click', '.remove-lesson', function() {
             var item_id = $(this).data('itemid');

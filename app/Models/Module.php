@@ -31,7 +31,7 @@ class Module extends Model {
     }
 
     public function lessons() {
-        return $this->hasMany(Lesson::class, 'module_id', 'id');
+        return $this->hasMany(Lesson::class, 'module_id', 'id')->orderBy('lessons.position', 'ASC')->orderBy('lessons.name', 'ASC');
     }
 
 }

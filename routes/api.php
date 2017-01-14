@@ -22,6 +22,7 @@ Route::group(['namespace' => 'API\\', 'middlware' => ['auth:api']], function() {
         Route::group(['prefix' => '/lessons', 'namespace' => 'Lessons\\'], function() {
             Route::post('/', ['as' => 'api.builders.lessons.modules.create', 'uses' => 'ModuleController@store']);
             Route::post('/update', ['as' => 'api.builders.lessons.modules.update', 'uses' => 'ModuleController@update']);
+            Route::post('/update/order', ['as' => 'api.builders.lessons.modules.update.order', 'uses' => 'ModuleController@update_order']);
         });
     });
 
