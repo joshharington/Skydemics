@@ -132,6 +132,7 @@
             <ul class="sidebar-menu">
                 <li class="active"><a href="{{ url('/home') }}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
                 <li><a href="{{ route('courses.builder') }}"><i class="fa fa-plus-square-o"></i><span>Course Builder</span></a></li>
+                <li><a href="{{ route('lecturer.courses') }}"><i class="fa fa-graduation-cap"></i><span>Courses</span></a></li>
                 <li class="hasSubmenu">
                     <a href="#admin-menu"><i class="fa fa-file-text-o"></i><span>Admin</span></a>
                     <ul id="admin-menu">

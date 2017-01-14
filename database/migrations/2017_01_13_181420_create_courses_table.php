@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('slug');
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
-            $table->string('published')->nullable();
+            $table->integer('published')->nullable();
             $table->string('published_date')->nullable();
             $table->integer('is_open')->default(1);
             $table->integer('invite_only')->default(0);
@@ -30,6 +30,8 @@ class CreateCoursesTable extends Migration
             $table->integer('featured_image_id')->nullable();
             $table->integer('auto_accept_enrollments')->default(0);
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

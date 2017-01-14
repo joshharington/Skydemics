@@ -57,4 +57,12 @@ class User extends Authenticatable
         return $this->hasMany(Lecturer::class, 'user_id', 'id');
     }
 
+    public function canUpdateCourse(Course $course) {
+        return $course->creator_id == $this->id ||$course->lecturer_id == $this->id;
+    }
+
+    public function canDeleteCourse(Course $course) {
+        return $course->creator_id == $this->id ||$course->lecturer_id == $this->id;
+    }
+
 }

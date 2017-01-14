@@ -67,9 +67,12 @@
         $('.table').dataTable();
 
         $(document).on('click', '.remove-discipline', function() {
+            var item_id = $(this).data('itemid');
             var r = confirm("Are you sure that you want to delete this discipline?");
             if (r == true) {
-                window.location.href = '{{ route('admin.site.disciplines.delete', $discipline->id) }}';
+                var url = '{{ route('admin.site.disciplines.delete', '--id--') }}';
+                url.replace('--id--', item_id);
+                window.location.href =  url;
             }
         });
     </script>

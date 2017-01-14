@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model {
+
+    use SoftDeletes;
 
     public $incrementing = true;
     protected $table = 'courses';
@@ -23,7 +26,7 @@ class Course extends Model {
     }
 
     public function discipline() {
-        return $this->hasOne(Discipline::class, 'discipline_id', 'id');
+        return $this->hasOne(Discipline::class, 'id', 'discipline_id');
     }
 
     public function featured_image() {
