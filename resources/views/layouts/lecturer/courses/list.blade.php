@@ -50,7 +50,7 @@
                     </td>
                     <td>0</td>
                     <td>0</td>
-                    <td>0</td>
+                    <td>{{ ($course->published == 1) ? 'Yes' : 'No' }}</td>
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('courses.builder.single', $course->id) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
@@ -76,7 +76,7 @@
             var r = confirm("Are you sure that you want to delete this course?");
             if (r == true) {
                 var url = '{{ route('lecturer.courses.delete', '--id--') }}';
-                url.replaceWith('--id--', item_id);
+                url = url.replace('--id--', item_id);
                 window.location.href =  url;
             }
         });

@@ -26,12 +26,18 @@ class CourseBuilderController extends Controller {
         $course->slug = $request->slug;
         $course->creator_id = $request->user()->id;
         $course->lecturer_id = $request->user()->id;
-        $course->start_date = $request->start_date;
-        $course->end_date = $request->end_date;
         $course->discipline_id = $request->discipline;
 
+        if($request->has('start_date')) {
+            $course->start_date = strtotime($request->start_date);
+        }
+
+        if($request->has('end_date')) {
+            $course->end_date = strtotime($request->end_date);
+        }
+
         if($request->has('published')) {
-            $course->published = ($request->published == 'on') ? 0 : 1;
+            $course->published = ($request->published == 'on') ? 1 : 0;
             $course->published_date = time();
         } else {
             $course->published = 0;
@@ -39,15 +45,19 @@ class CourseBuilderController extends Controller {
         }
 
         if($request->has('invite_only')) {
-            $course->invite_only = ($request->invite_only == 'on') ? 0 : 1;
+            $course->invite_only = ($request->invite_only == 'on') ? 1 : 0;
+            $course->is_open = 0;
         }
 
         if($request->has('public_enrollment')) {
-            $course->is_open = ($request->public_enrollment == 'on') ? 0 : 1;
+            $course->is_open = ($request->public_enrollment == 'on') ? 1 : 0;
+            $course->invite_only = 0;
         }
 
         if($request->has('manually_accept')) {
             $course->auto_accept_enrollments = ($request->manually_accept == 'on') ? 0 : 1;
+        } else {
+            $course->auto_accept_enrollments = 1;
         }
 
         $course->save();

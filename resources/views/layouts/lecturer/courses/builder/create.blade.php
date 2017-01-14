@@ -35,21 +35,20 @@
 
                         <div class="col-md-9">
                             <div class="form-group form-control-material">
-                                <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="" />
+                                <input type="text" name="title" id="title" placeholder="Course Title" class="form-control used" value="{{ old('title') }}" />
                                 <label for="title">Title</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group">
                                 <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
-                                <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug">
+                                <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug" value="{{ old('slug') }}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="30" class="summernote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur dignissimos itaque nesciunt nostrum, provident saepe similique. Delectus dicta distinctio quibusdam velit veniam? Aperiam cum dignissimos doloremque officiis
-                                quisquam velit!</textarea>
+                                <textarea name="description" id="description" cols="30" class="summernote">{!! old('description') !!}</textarea>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -63,20 +62,20 @@
                             <br />
                             <select name="discipline" class="selectpicker" data-style="btn-white" data-live-search="true" data-size="5">
                                 @foreach($disciplines as $discipline_id => $dis)
-                                    <option value="{{ $discipline_id }}">{{ $dis }}</option>
+                                    <option value="{{ $discipline_id }}" {{ ($discipline_id == old('discipline')) ? 'selected' : '' }}>{{ $dis }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="start_date">Start Date</label>
                             <div class="form-group form-control-material">
-                                <input type="text" name="start_date" id="start-date" placeholder="Start Date" class="form-control datepicker" value="{{ (old('start-date')) ? old('start-date') : '' }} " />
+                                <input type="text" name="start_date" id="start-date" placeholder="Start Date" class="form-control datepicker" value="{{ old('start_date') }} " />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="end_date">End Date</label>
                             <div class="form-group form-control-material">
-                                <input type="text" name="end_date" id="end-date" placeholder="End Date" class="form-control datepicker" value="{{ (old('end-date')) ? old('end-date') : '' }}" />
+                                <input type="text" name="end_date" id="end-date" placeholder="End Date" class="form-control datepicker" value="{{ old('end_date') }}" />
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -84,16 +83,16 @@
                         <div class="col-md-3">
                             <label for="parent">Is Published</label>
                             <br />
-                            <div data-type="publishe" class="checkbox checkbox-info checkbox-circle">
-                                <input id="publishe" type="checkbox" name="invite_only">
-                                <label for="publishe">Yes</label>
+                            <div data-type="published" class="checkbox checkbox-info checkbox-circle">
+                                <input id="published" type="checkbox" name="published" {{ (old('published')) ? 'checked' : '' }}>
+                                <label for="published">Yes</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="parent">Enrollments are Invite Only</label>
                             <br />
                             <div data-type="invite_only" class="checkbox checkbox-info checkbox-circle">
-                                <input id="invite_only" type="checkbox" name="invite_only">
+                                <input id="invite_only" type="checkbox" name="invite_only" {{ (old('invite_only')) ? 'checked' : '' }}>
                                 <label for="invite_only">Yes</label>
                             </div>
                         </div>
@@ -101,7 +100,7 @@
                             <label for="parent">Anyone can enroll</label>
                             <br />
                             <div data-type="public_enrollment" class="checkbox checkbox-info checkbox-circle">
-                                <input id="public_enrollment" type="checkbox" checked name="public_enrollment">
+                                <input id="public_enrollment" type="checkbox" checked name="public_enrollment" {{ (old('public_enrollment')) ? 'checked' : '' }}>
                                 <label for="public_enrollment">Yes</label>
                             </div>
                         </div>
@@ -109,7 +108,7 @@
                             <label for="parent">Manually accept enrollments</label>
                             <br />
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input id="manually_accept" type="checkbox" checked name="manually_accept">
+                                <input id="manually_accept" type="checkbox" name="manually_accept" {{ (old('manually_accept')) ? 'checked' : '' }}>
                                 <label for="manually_accept">Yes</label>
                             </div>
                         </div>

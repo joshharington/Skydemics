@@ -71,7 +71,7 @@
             var r = confirm("Are you sure that you want to delete this discipline?");
             if (r == true) {
                 var url = '{{ route('admin.site.disciplines.delete', '--id--') }}';
-                url.replace('--id--', item_id);
+                url = url.replace('--id--', item_id);
                 window.location.href =  url;
             }
         });

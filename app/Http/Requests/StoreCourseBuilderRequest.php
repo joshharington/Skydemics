@@ -24,8 +24,8 @@ class StoreCourseBuilderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:courses,name',
-            'slug' => 'required|unique:courses',
+            'title' => 'required',
+            'slug' => 'required',
             'description' => '',
             'discipline' => '',
             'published' => '',
