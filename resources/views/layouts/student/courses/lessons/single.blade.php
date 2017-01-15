@@ -10,7 +10,13 @@
 
 @section('custom-styles')
     <style>
-
+        .file-link {
+            text-align: center;
+            text-decoration: none;
+        }
+        .file-link:hover a {
+            text-decoration: none;
+        }
     </style>
 @endsection
 
@@ -34,13 +40,44 @@
             <div class="page-section">
                 <h2 class="text-headline margin-none">Files</h2>
                 <div class="panel panel-body">
-                    {!! $lesson->description !!}
-                    <br/>
-                    <p class="margin-none">
-                        <span class="label bg-gray-dark">Tag 1</span>
-                        <span class="label label-grey-200">Tag 2</span>
-                        <span class="label label-grey-200">Tag 3</span>
-                    </p>
+                    <ul class="list-inline">
+                        <li class="file-link">
+                            <a href="#" >
+                        <span class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of file">
+                            <i class="fa fa-file-text"></i>
+                        </span>
+                                <br />
+                                Name of file
+                            </a>
+                        </li>
+                        <li class="file-link">
+                            <a href="#">
+                        <span class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of file">
+                            <i class="fa fa-file-text"></i>
+                        </span>
+                                <br />
+                                Name of file
+                            </a>
+                        </li>
+                        <li class="file-link">
+                            <a href="#">
+                        <span class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of file">
+                            <i class="fa fa-file-text"></i>
+                        </span>
+                                <br />
+                                Name of file
+                            </a>
+                        </li>
+                        <li class="file-link">
+                            <a href="#">
+                        <span class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of file">
+                            <i class="fa fa-file-text"></i>
+                        </span>
+                                <br />
+                                Name of file
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
