@@ -17,6 +17,10 @@ class Course extends Model {
         'discipline_id', 'published', 'published_date', 'featured_image_id', 'auto_accept_enrollments'
     ];
 
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
     public function creator() {
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }

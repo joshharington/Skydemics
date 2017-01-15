@@ -66,11 +66,11 @@ class CourseBuilderController extends Controller {
         $course->save();
 
         if($request->has('lessons') && $request->lessons == true) {
-            return redirect()->route('courses.builder.lessons', $course->id);
+            return redirect()->route('courses.builder.lessons', $course->slug);
         }
 
         session()->flash('success_message', 'Course saved.');
-        return redirect()->route('courses.builder.single', $course->id);
+        return redirect()->route('courses.builder.single', $course->slug);
 
     }
 
@@ -125,11 +125,11 @@ class CourseBuilderController extends Controller {
         $course->save();
 
         if($request->has('lessons') && $request->lessons == true) {
-            return redirect()->route('courses.builder.lessons', $course->id);
+            return redirect()->route('courses.builder.lessons', $course->slug);
         }
 
         session()->flash('success_message', 'Course updated.');
-        return redirect()->route('courses.builder.single', $course->id);
+        return redirect()->route('courses.builder.single', $course->slug);
 
     }
 

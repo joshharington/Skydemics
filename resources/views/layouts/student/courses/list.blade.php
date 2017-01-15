@@ -24,7 +24,7 @@
                 <div class="panel panel-default paper-shadow" data-z="0.5">
 
                     <div class="panel-body">
-                        <h4 class="text-headline margin-v-0-10"><a href="{{ route('student.courses.single', $course->id) }}">{{ $course->name }}</a></h4>
+                        <h4 class="text-headline margin-v-0-10"><a href="{{ route('student.courses.single', [$course->lecturer_id, $course->slug]) }}">{{ $course->name }}</a></h4>
 
                         <p class="small margin-none">
                             <a href="#"><span class="fa fa-fw fa-graduation-cap"></span> Enroll Now</a>

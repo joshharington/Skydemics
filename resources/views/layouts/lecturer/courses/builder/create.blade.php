@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
+                                <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/{{ \Illuminate\Support\Facades\Auth::user()->id }}/</span>
                                 <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug" value="{{ old('slug') }}">
                             </div>
                         </div>

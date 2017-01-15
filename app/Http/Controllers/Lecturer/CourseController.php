@@ -35,7 +35,7 @@ class CourseController extends Controller {
         $module->delete();
 
         session()->flash('success_message', 'Module deleted.');
-        return redirect()->route('courses.builder.lessons', $course->id);
+        return redirect()->route('courses.builder.lessons', $course->slug);
     }
 
     public function destroy_lesson(Course $course, Lesson $lesson) {
@@ -44,7 +44,7 @@ class CourseController extends Controller {
         $lesson->delete();
 
         session()->flash('success_message', 'Lesson deleted.');
-        return redirect()->route('courses.builder.lessons', $course->id);
+        return redirect()->route('courses.builder.lessons', $course->slug);
     }
 
 }

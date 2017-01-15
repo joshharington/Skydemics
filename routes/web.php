@@ -73,7 +73,10 @@ Route::group(['prefix' => '/lecturers', 'namespace' => 'Lecturer\\', 'middleware
 Route::group(['prefix' => '/students', 'namespace' => 'Student\\', 'middleware' => ['role:super.admin|admin|student', 'auth']], function() {
     Route::group(['prefix' => '/courses', 'namespace' => 'Courses\\'], function() {
         Route::get('/', ['as' => 'student.courses', 'uses' => 'CourseController@index']);
-        Route::get('/{course}', ['as' => 'student.courses.single', 'uses' => 'CourseController@show']);
+        Route::get('/{user}/{course}', ['as' => 'student.courses.single', 'uses' => 'CourseController@show']);
+        Route::get('/{user}/{course}/enroll', ['as' => 'student.courses.single.enroll', 'uses' => 'EnrollmentController@store']);
+        Route::get('/{user}/{course}/curriculum', ['as' => 'student.courses.single.curriculum', 'uses' => 'ModuleController@index']);
+        Route::get('/{user}/{course}/{module}/{lesson}', ['as' => 'student.courses.single.curriculum.lesson', 'uses' => 'LessonController@show']);
     });
 });
 

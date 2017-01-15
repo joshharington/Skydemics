@@ -1,17 +1,17 @@
 @extends('index')
 
 @section('site-title')
-    {{ $course->name }} | Course
+    {{ $lesson->name }} | {{ $module->name . ' - ' . $course->name }}
 @endsection
 
 @section('page-title')
-    {{ $course->name }} | Course
+    {{ $lesson->name }} <small>| {{ $module->name . ' - ' . $course->name }}</small>
 @endsection
 
 @section('custom-styles')
-<style>
+    <style>
 
-</style>
+    </style>
 @endsection
 
 @section('content')
@@ -19,69 +19,29 @@
         <div class="media-body">
 
             <div class="page-section">
-                {!! $course->description !!}
-                <br/>
-                <p class="margin-none">
-                    <span class="label bg-gray-dark">Tag 1</span>
-                    <span class="label label-grey-200">Tag 2</span>
-                    <span class="label label-grey-200">Tag 3</span>
-                </p>
+                <h2 class="text-headline margin-none">Lesson</h2>
+                <div class="panel panel-body">
+                    {!! $lesson->description !!}
+                    <br/>
+                    <p class="margin-none">
+                        <span class="label bg-gray-dark">Tag 1</span>
+                        <span class="label label-grey-200">Tag 2</span>
+                        <span class="label label-grey-200">Tag 3</span>
+                    </p>
+                </div>
             </div>
 
             <div class="page-section">
-                <h2 class="text-headline margin-none">What you'll learn</h2>
-                <ul class="list-group relative paper-shadow margin-none" data-hover-z="0.5" data-animated>
-                    <li class="list-group-item">
-                        <div class="media v-middle">
-                            <div class="media-left">
-                                1.
-                            </div>
-                            <div class="media-body text-body-2">
-                                Basics of GIT and how to become a STAR.
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item paper-shadow">
-                        <div class="media v-middle">
-                            <div class="media-left">
-                                2.
-                            </div>
-                            <div class="media-body text-body-2">
-                                Database connections & some other nice features.
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item paper-shadow">
-                        <div class="media v-middle">
-                            <div class="media-left">
-                                3.
-                            </div>
-                            <div class="media-body text-body-2">
-                                Eaque ex exercitationem quia reprehenderit?
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item paper-shadow">
-                        <div class="media v-middle">
-                            <div class="media-left">
-                                4.
-                            </div>
-                            <div class="media-body text-body-2">
-                                Ab distinctio nemo, provident quia quibusdam ullam.
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item paper-shadow">
-                        <div class="media v-middle">
-                            <div class="media-left">
-                                5.
-                            </div>
-                            <div class="media-body text-body-2">
-                                Conclusion & Notes.
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <h2 class="text-headline margin-none">Files</h2>
+                <div class="panel panel-body">
+                    {!! $lesson->description !!}
+                    <br/>
+                    <p class="margin-none">
+                        <span class="label bg-gray-dark">Tag 1</span>
+                        <span class="label label-grey-200">Tag 2</span>
+                        <span class="label label-grey-200">Tag 3</span>
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -144,7 +104,7 @@
 @endsection
 
 @section('custom-scripts')
-<script>
+    <script>
 
-</script>
+    </script>
 @endsection

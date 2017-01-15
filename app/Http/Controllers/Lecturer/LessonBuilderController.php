@@ -56,7 +56,7 @@ class LessonBuilderController extends Controller {
         $lesson->save();
 
         session()->flash('success_message', 'Lesson created.');
-        return redirect()->route('courses.builder.lessons', $course->id);
+        return redirect()->route('courses.builder.lessons', $course->slug);
 
     }
 
@@ -97,7 +97,7 @@ class LessonBuilderController extends Controller {
         $lesson->save();
 
         session()->flash('success_message', 'Lesson updated.');
-        return redirect()->route('courses.builder.lessons', $course->id);
+        return redirect()->route('courses.builder.lessons', $course->slug);
 
     }
 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Edit a Lesson | Lecturer <small><a href="{{ route('courses.builder.lessons', $course->id) }}">Back to {{ $course->name }} lessons</a></small>
+    Edit a Lesson | Lecturer <small><a href="{{ route('courses.builder.lessons', $course->slug) }}">Back to {{ $course->name }} lessons</a></small>
 @endsection
 
 @section('custom-styles')
@@ -31,7 +31,7 @@
 
         <!-- Panes -->
         <div class="tab-content">
-            <form action="{{ route('courses.builder.lessons.single', [$course->id, $lesson->id]) }}" method="POST" id="builder-form" enctype="multipart/form-data">
+            <form action="{{ route('courses.builder.lessons.single', [$course->slug, $lesson->slug]) }}" method="POST" id="builder-form" enctype="multipart/form-data">
                 <div id="lesson" class="tab-pane active">
 
                     <div class="col-md-7">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-md-5">
                         <div class="input-group">
-                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/{{ $course->slug }}/{{ ($module->slug != '') ? $module->slug : $module->id }}/</span>
+                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/{{ $course->lecturer_id }}/{{ $course->slug }}/{{ ($module->slug != '') ? $module->slug : $module->id }}/</span>
                             <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug" value="{{ (old('slug')) ? old('slug') : $lesson->slug }}">
                         </div>
                     </div>

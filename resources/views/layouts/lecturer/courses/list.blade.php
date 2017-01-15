@@ -53,8 +53,8 @@
                     <td>{{ ($course->published == 1) ? 'Yes' : 'No' }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('courses.builder.single', $course->id) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                            <a href="#" class="btn btn-xs btn-danger remove-course" data-itemid="{{ $course->id }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            <a href="{{ route('courses.builder.single', $course->slug) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                            <a href="#" class="btn btn-xs btn-danger remove-course" data-itemid="{{ $course->slug }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                         </div>
                     </td>
                 </tr>

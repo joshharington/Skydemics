@@ -79,21 +79,21 @@
     ?>
     @foreach($course->modules as $module)
         <div class="panel panel-default curriculum open paper-shadow" data-z="0.5">
-            <div class="panel-heading panel-heading-gray" data-toggle="collapse" data-target="#module-{{ $module->id }}">
+            <div class="panel-heading panel-heading-gray" data-toggle="collapse" data-target="#module-{{ $module->slug }}">
                 <div class="media">
                     <div class="media-left">
-                        <button data-moduleid="{{ $module->id }}" class="edit-module btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span></button><br /><br />
-                        <button data-moduleid="{{ $module->id }}" class="remove-module btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button data-moduleid="{{ $module->slug }}" class="edit-module btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span></button><br /><br />
+                        <button data-moduleid="{{ $module->slug }}" class="remove-module btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                     <div class="media-body">
-                        <h4 class="text-headline module-header" data-moduleid="{{ $module->id }}">{{ ($module->name != '') ? $module->name : 'Module ' . $count++ }}</h4>
-                        <p class="module-description" data-moduleid="{{ $module->id }}">{{ ($module->description != '') ? $module->description : 'Click on the settings button next to the title to enter or exit edit mode for this module' }}</p>
+                        <h4 class="text-headline module-header" data-moduleid="{{ $module->slug }}">{{ ($module->name != '') ? $module->name : 'Module ' . $count++ }}</h4>
+                        <p class="module-description" data-moduleid="{{ $module->slug }}">{{ ($module->description != '') ? $module->description : 'Click on the settings button next to the title to enter or exit edit mode for this module' }}</p>
                     </div>
                 </div>
             </div>
-            <div class="list-group collapse in sortable" id="module-{{ $module->id }}">
+            <div class="list-group collapse in sortable" id="module-{{ $module->slug }}">
                 @foreach($module->lessons as $lesson)
-                    <div class="list-group-item media ui-state-default" id="lesson-{{ $lesson->id }}">
+                    <div class="list-group-item media ui-state-default" id="lesson-{{ $lesson->slug }}">
                         <div class="media-left">
                             <div class="text-crt"><span class="glyphicon glyphicon-move"></span></div>
                         </div>
@@ -106,14 +106,14 @@
                         </div>
                         <div class="pull-right">
                             <div class="btn-group">
-                                <a href="{{ route('courses.builder.lessons.single', [$course->id, $lesson->id]) }}" class="btn btn-xs btn-info" data-moduleid="1"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                <a href="#" class="btn btn-xs btn-danger remove-lesson hidden" data-moduleid="{{ $module->id }}" data-lessonid="{{ $lesson->id }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                <a href="{{ route('courses.builder.lessons.single', [$course->slug, $lesson->slug]) }}" class="btn btn-xs btn-info" data-moduleid="1"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="#" class="btn btn-xs btn-danger remove-lesson hidden" data-moduleid="{{ $module->slug }}" data-lessonid="{{ $lesson->slug }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
                 <div class="list-group-item media">
-                    <a class="btn btn-default btn-block" href="{{ route('courses.builder.lessons.create', [$course->id, $module->id]) }}" data-moduleid="{{ $module->id }}" data-courseid="{{ $course->id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a class="btn btn-default btn-block" href="{{ route('courses.builder.lessons.create', [$course->slug, $module->slug]) }}" data-moduleid="{{ $module->slug }}" data-courseid="{{ $course->slug }}"><span class="glyphicon glyphicon-plus"></span></a>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
             var item_id = $(this).data('lessonid');
             var r = confirm("Are you sure that you want to delete this lesson?");
             if (r == true) {
-                var url = '{{ route('lecturer.courses.modules.lessons.delete', [$course->id, '--id--']) }}';
+                var url = '{{ route('lecturer.courses.modules.lessons.delete', [$course->slug, '--id--']) }}';
                 url = url.replace('--id--', item_id);
                 window.location.href =  url;
             }
@@ -169,7 +169,7 @@
             var item_id = $(this).data('moduleid');
             var r = confirm("Are you sure that you want to delete this module?");
             if (r == true) {
-                var url = '{{ route('lecturer.courses.modules.delete', [$course->id, '--id--']) }}';
+                var url = '{{ route('lecturer.courses.modules.delete', [$course->slug, '--id--']) }}';
                 url = url.replace('--id--', item_id);
                 window.location.href =  url;
             }
@@ -188,7 +188,7 @@
                     if(res.hasOwnProperty('data') && res.data.hasOwnProperty('id')) {
                         $('[data-moduleid="' + guid + '"]').attr('data-moduleid', res.data.id);
 
-                        var url = '{{ route('courses.builder.lessons.create', [$course->id, '--module_id--']) }}';
+                        var url = '{{ route('courses.builder.lessons.create', [$course->slug, '--module_id--']) }}';
                         url = url.replace('--module_id--', res.data.id);
                         $('.btn-add-lesson[data-moduleid="' + res.data.id + '"]').attr('href', url).removeAttr('disabled');
                     }

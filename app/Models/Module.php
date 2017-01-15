@@ -14,6 +14,10 @@ class Module extends Model {
         'position', 'published', 'published_date', 'temp_guid'
     ];
 
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
     public function tags() {
         return $this->morphMany(Tagged::class, 'taggable');
     }

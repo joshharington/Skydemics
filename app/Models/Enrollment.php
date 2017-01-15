@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Enrollment extends Model {
 
     public $incrementing = true;
-    protected $table = 'disciplines';
+    protected $table = 'enrollments';
     protected $primaryKey = 'id';
     protected $fillable = [
         'course_id', 'user_id', 'enrolled_by_user_id', 'enrolled_date', 'is_request', 'accepted_by_lecturer', 'accepted_by_student'

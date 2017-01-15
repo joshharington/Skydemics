@@ -30,7 +30,7 @@
 
         <!-- Panes -->
         <div class="tab-content">
-            <form action="{{ route('courses.builder.single', $course->id) }}" method="POST" id="builder-form">
+            <form action="{{ route('courses.builder.single', $course->slug) }}" method="POST" id="builder-form">
                 <div id="course" class="tab-pane active">
 
                     <div class="col-md-9">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/</span>
+                            <span class="input-group-addon text-primary" style="color: #797979;">{{ env('APP_URL') }}/courses/{{ $course->lecturer_id }}/</span>
                             <input type="text" class="form-control" id="slug" aria-describedby="slug" name="slug" value="{{ $course->slug }}">
                         </div>
                     </div>

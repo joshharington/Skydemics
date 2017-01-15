@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student\Courses;
 
 use App\Models\Course;
+use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +16,8 @@ class CourseController extends Controller {
         return view('layouts.student.courses.list', ['courses' => $courses]);
     }
 
-    public function show(Course $course) {
-        return view('layouts.student.courses.single', ['course' => $course]);
+    public function show(User $user, Course $course) {
+        return view('layouts.student.courses.single', ['lecturer' => $user, 'course' => $course]);
     }
 
 }
