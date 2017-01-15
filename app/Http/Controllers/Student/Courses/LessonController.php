@@ -13,7 +13,7 @@ class LessonController extends Controller {
 
     public function show(User $user, Course $course, Module $module, Lesson $lesson) {
 
-        
+
 
         return view('layouts.student.courses.lessons.single', ['lecturer' => $user, 'course' => $course, 'module' => $module, 'lesson' => $lesson]);
     }
