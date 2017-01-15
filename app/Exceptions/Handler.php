@@ -42,8 +42,14 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
+    public function render($request, Exception $exception) {
+        if ($exception instanceof \Ultraware\Roles\Exceptions\RoleDeniedException) {
+            // you can for example flash message, redirect...
+            session()->flash('error_message', 'You don\'t have the needed permissions to process this request.');
+            return redirect()->to('/home');
+        }
+
+
         return parent::render($request, $exception);
     }
 

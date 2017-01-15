@@ -29,8 +29,9 @@ Route::group(['prefix' => '/account', 'namespace' => 'Accounts\\', 'middleware' 
     Route::post('/settings', ['as' => 'account.settings', 'uses' => 'SettingsController@update']);
 });
 
-Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
-    Route::group(['namespace' => 'Lecturer\\'], function() {
+
+Route::group(['prefix' => '/lecturers', 'namespace' => 'Lecturer\\', 'middleware' => ['role:super.admin|admin|lecturer', 'auth']], function() {
+    Route::group(['prefix' => '/courses'], function() {
 
         // list all
         Route::get('/', ['as' => 'lecturer.courses', 'uses' => 'CourseController@index']);
@@ -66,6 +67,13 @@ Route::group(['prefix' => '/courses', 'middleware' => ['auth']], function() {
         Route::get('/{course}/delete', ['as' => 'lecturer.courses.delete', 'uses' => 'CourseController@destroy']);
         Route::get('/{course}/delete/{module}', ['as' => 'lecturer.courses.modules.delete', 'uses' => 'CourseController@destroy_module']);
         Route::get('/{course}/delete/lesson/{lesson}', ['as' => 'lecturer.courses.modules.lessons.delete', 'uses' => 'CourseController@destroy_lesson']);
+    });
+});
+
+Route::group(['prefix' => '/students', 'namespace' => 'Student\\', 'middleware' => ['role:super.admin|admin|student', 'auth']], function() {
+    Route::group(['prefix' => '/courses', 'namespace' => 'Courses\\'], function() {
+        Route::get('/', ['as' => 'student.courses', 'uses' => 'CourseController@index']);
+        Route::get('/{course}', ['as' => 'student.courses.single', 'uses' => 'CourseController@show']);
     });
 });
 
